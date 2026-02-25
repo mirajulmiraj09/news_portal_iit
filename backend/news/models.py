@@ -4,6 +4,7 @@ from accounts.models import User
 class News(models.Model):
     title = models.CharField(max_length=255)
     body = models.TextField()
+    # image = models.ImageField(upload_to="news_images/", blank=True, null=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="news_articles")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

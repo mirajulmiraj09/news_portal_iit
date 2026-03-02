@@ -22,6 +22,7 @@ class IsAuthorOrReadOnly(permissions.BasePermission):
 
 
 class NewsViewSet(viewsets.ModelViewSet):
+    # Since this it will not n+1 queries problem 
     queryset = News.objects.select_related("author").prefetch_related("comments__user")
     permission_classes = [IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly]
 
